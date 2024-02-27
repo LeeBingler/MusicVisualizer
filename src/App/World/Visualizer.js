@@ -31,6 +31,7 @@ export default class Visualizer {
         this.reader.addEventListener('load', () => {
             this.loader.load(this.reader.result, (buffer) => {
                 this.setSound(buffer);
+                this.playSound();
             });
         });
     }
@@ -71,6 +72,7 @@ export default class Visualizer {
     }
 
     changeSound(music) {
+        this.resetSound();
         this.reader.readAsDataURL(music);
     }
 
