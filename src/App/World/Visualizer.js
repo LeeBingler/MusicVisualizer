@@ -78,7 +78,21 @@ export default class Visualizer {
         return this.analyser.getAverageFrequency();
     }
 
-    getTimeMusicPercentage(deltaTime) {
+    getTimeMusicPercentage() {
+        return (this.currentTime * 100) / this.sound.buffer.duration;
+    }
+
+    update(deltaTime) {
+        const frequency = Math.max(this.getFrequency() - 100, 0) / 50;
+        const frequencyUniform = this.mesh.material.uniforms[this.frequencyUniformName];
+
+        gsap.to(frequencyUniform, {
+            duration: 1,
+            ease: 'Slow.easeOut',
+            value: frequency,
+        });
+
+        // handle time duration of music played
         if (!this.isPaused) {
             this.currentTime += deltaTime / 1000;
         }
@@ -88,18 +102,5 @@ export default class Visualizer {
             this.currentTime = 0;
             this.isPaused = true;
         }
-
-        return (this.currentTime * 100) / this.sound.buffer.duration;
-    }
-
-    update() {
-        const frequency = Math.max(this.getFrequency() - 100, 0) / 50;
-        const frequencyUniform = this.mesh.material.uniforms[this.frequencyUniformName];
-
-        gsap.to(frequencyUniform, {
-            duration: 1,
-            ease: 'Slow.easeOut',
-            value: frequency,
-        });
     }
 }

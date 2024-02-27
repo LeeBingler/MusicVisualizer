@@ -51,8 +51,8 @@ export default class App {
     }
 
     _update() {
-        this.world.update(this.time.elapsed);
-        this.controlPanel.updateCursor(this.time.delta);
+        this.world.update(this.time.elapsed, this.time.delta);
+        this.controlPanel.updateCursor();
         this.camera.update();
         this.renderer.update();
     }

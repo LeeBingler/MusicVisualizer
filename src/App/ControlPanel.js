@@ -126,11 +126,11 @@ export default class ControlPanel {
         document.body.appendChild(this.instance);
     }
 
-    updateCursor(deltaTime) {
+    updateCursor() {
         let percentage = 0;
 
         if (this.visualizer.isReady) {
-            percentage = this.visualizer.getTimeMusicPercentage(deltaTime);
+            percentage = this.visualizer.getTimeMusicPercentage();
         }
 
         document.documentElement.style.setProperty('--percentage', `${(100 - percentage) * -1}%`);

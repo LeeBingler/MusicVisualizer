@@ -23,10 +23,10 @@ export default class World {
         this.scene.add(this.sphere.instance, this.particles.instance);
     }
 
-    update(elapsedTime) {
+    update(elapsedTime, deltaTime) {
         if (this.particles) {
             this.sphere.update(elapsedTime);
-            this.visualizer.update(elapsedTime);
+            this.visualizer.update(deltaTime);
             this.particles.update(elapsedTime, this.visualizer.getFrequency());
         }
     }
