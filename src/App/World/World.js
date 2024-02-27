@@ -14,7 +14,7 @@ export default class World {
 
         this.resources.on('ready', () => {
             this.particles = new Particles(800);
-            this.visualizer.setSound(this.resources.items.Music);
+            this.visualizer.setSound(this.resources.items.defaultMusic);
             this._addWorld();
         });
     }

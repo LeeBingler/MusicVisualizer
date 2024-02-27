@@ -10,8 +10,8 @@ export default [
         path: 'textures/star.png',
     },
     {
-        name: 'Music',
+        name: 'defaultMusic',
         type: 'audio',
-        path: 'audio/Houssbad, Kronomuzik - Rocky & Riri.mp3',
+        path: 'audio/BLACKPINK-ShutDown.mp3',
     },
 ];
