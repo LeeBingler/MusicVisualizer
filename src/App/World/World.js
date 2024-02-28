@@ -15,6 +15,7 @@ export default class World {
         this.resources.on('ready', () => {
             this.particles = new Particles(800);
             this.visualizer.addSound(this.resources.items.defaultMusic, 'BLACKPINK-ShutDown.mp3');
+            this.visualizer.addSound(this.resources.items.merryGoesRoundMusic, 'Merry Go Round of Life.mp3');
             this.visualizer.setSound(0);
             this._addWorld();
         });

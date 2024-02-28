@@ -14,4 +14,9 @@ export default [
         type: 'audio',
         path: 'audio/BLACKPINK-ShutDown.mp3',
     },
+    {
+        name: 'merryGoesRoundMusic',
+        type: 'audio',
+        path: 'audio/Merry Go Round of Life.mp3'
+    }
 ];
