@@ -20,19 +20,32 @@ export default class ControlPanel {
     }
 
     _createCursor() {
+        this.cursorPanel = document.createElement('div');
+        this.cursorPanel.classList.add('cursor-time-container');
+
+        this.nameSong = document.createElement('h1');
+        this.nameSong.classList.add('name-song');
+        this.nameSong.textContent = 'BLACKPINK-ShutDown';
+
         this.cursor = document.createElement('div');
         this.cursor.classList.add('cursor-time');
 
-        this.instance.appendChild(this.cursor);
+        this.cursorPanel.appendChild(this.cursor);
+        this.cursorPanel.appendChild(this.nameSong);
+
+        this.instance.appendChild(this.cursorPanel);
+    }
+
+    _changeNameSong(name) {
+        this.nameSong.textContent = name;
     }
 
     _createFilePanel() {
         this.filePanel = document.createElement('div');
-        this.filePanel.classList.add('file_upload-container')
+        this.filePanel.classList.add('file_upload-container');
 
         this.fileLabel = document.createElement('label');
         this.fileLabel.textContent = 'Upload Your Music';
-
 
         this.fileInput = document.createElement('input');
         this.fileInput.type = 'file';
@@ -50,8 +63,9 @@ export default class ControlPanel {
     _initEventListenerFileUpload() {
         this.fileInput.addEventListener('change', (e) => {
             const music = this.fileInput.files[0];
-
             this.visualizer.changeSound(music);
+            this._changeNameSong(music.name);
+
         });
     }
 

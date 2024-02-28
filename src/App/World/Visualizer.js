@@ -22,15 +22,22 @@ export default class Visualizer {
         this.sound = new THREE.Audio(this.listener);
         this.loader = new THREE.AudioLoader();
 
+        this.buffersSound = [];
+        this.currentSound = 0;
+
         this.analyser = new THREE.AudioAnalyser(this.sound, 32);
     }
 
     _initFileReader() {
         this.reader = new FileReader();
 
-        this.reader.addEventListener('load', () => {
+        this.reader.addEventListener('load', (e) => {
+            console.log(e);
             this.loader.load(this.reader.result, (buffer) => {
-                this.setSound(buffer);
+                this.buffersSound.push(buffer);
+                this.currentSound++;
+
+                this.setSound(this.buffersSound[this.currentSound - 1]);
                 this.playSound();
             });
         });

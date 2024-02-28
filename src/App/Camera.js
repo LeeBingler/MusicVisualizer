@@ -11,8 +11,6 @@ export default class Camera {
         this.canvas = this.app.canvas;
         this.scene = this.app.scene;
 
-        this.numberOfScene = 3;
-
         this._setInstance();
         this._setControler();
     }

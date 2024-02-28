@@ -66,11 +66,34 @@ body {
     cursor: pointer;
 }
 
+.cursor-time-container {
+    position: fixed;
+    top: -100%;
+    left: 5%;
+    background-color: transparent;
+    width: 90%;
+    height: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.name-song {
+    color: white;
+    text-align: center;
+    font-size: min(5vw, 1.8rem);
+
+    white-space: nowrap;
+
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .cursor-time {
     position: fixed;
     top: -100%;
     left: 5%;
-
     background-color: transparent;
     width: 90%;
     height: 10px;
