@@ -29,13 +29,14 @@ body {
     transform: translateX(-50%);
 
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     column-gap: 1rem;
 
     background-color: transparent;
 
     width: 80vw;
+    height: fit-content;
 }
 
 .file_upload-container {

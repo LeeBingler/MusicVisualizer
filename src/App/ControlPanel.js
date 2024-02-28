@@ -25,7 +25,7 @@ export default class ControlPanel {
 
         this.nameSong = document.createElement('h1');
         this.nameSong.classList.add('name-song');
-        this.nameSong.textContent = 'BLACKPINK-ShutDown';
+        this.nameSong.textContent = 'BLACKPINK - ShutDown';
 
         this.cursor = document.createElement('div');
         this.cursor.classList.add('cursor-time');
