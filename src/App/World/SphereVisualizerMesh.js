@@ -52,6 +52,8 @@ export default class SphereVisualizerMesh {
 
         const wireframe = new THREE.LineSegments(this.geometry, this.material);
         wireframe.scale.setScalar(1 + 0.005);
+
+        this.instance.position.y += 0.27;
         this.instance.add(wireframe);
     }
 
