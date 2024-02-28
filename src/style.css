@@ -30,9 +30,12 @@ body {
 
     display: flex;
     align-items: center;
+    justify-content: center;
     column-gap: 1rem;
 
     background-color: transparent;
+
+    width: 80vw;
 }
 
 .file_upload-container {
@@ -41,7 +44,12 @@ body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
     row-gap: 0.2rem;
+}
+
+.file_upload-container label {
+    text-align: center;
 }
 
 #file_upload {
@@ -85,11 +93,15 @@ body {
     width: 100%;
 }
 
+.button-container {
+    display: flex;
+}
+
 .button-container button {
     background-color: transparent;
     color: white;
 
-    font-size: 2vh;
+    font-size: min(2vw, 1.2rem);
 
     padding: 5px 10px;
     margin-left: 1rem;
@@ -113,4 +125,14 @@ body {
     cursor: pointer;
 
     accent-color: #35356e;
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    #file_upload {
+        width: 25vw;
+    }
 }

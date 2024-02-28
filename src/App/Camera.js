@@ -24,7 +24,7 @@ export default class Camera {
             0.1,
             100
         );
-        this.instance.position.z = 3;
+        this.instance.position.z = this.sizes.width < 768 ? 4.2 : 3;
 
         this.scene.add(this.instance);
     }
@@ -39,6 +39,8 @@ export default class Camera {
     resize() {
         this.instance.aspect = this.sizes.width / this.sizes.height;
         this.instance.updateProjectionMatrix();
+
+        this.instance.position.z = this.sizes.width < 768 ? 4.2 : 3;
     }
 
     update() {
