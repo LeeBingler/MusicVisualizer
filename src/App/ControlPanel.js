@@ -25,7 +25,7 @@ export default class ControlPanel {
 
         this.nameSong = document.createElement('h1');
         this.nameSong.classList.add('name-song');
-        this.nameSong.textContent = 'BLACKPINK - ShutDown';
+        this.nameSong.textContent = 'BLACKPINK-ShutDown.mp3';
 
         this.cursor = document.createElement('div');
         this.cursor.classList.add('cursor-time');
@@ -63,9 +63,9 @@ export default class ControlPanel {
     _initEventListenerFileUpload() {
         this.fileInput.addEventListener('change', (e) => {
             const music = this.fileInput.files[0];
-            this.visualizer.changeSound(music);
-            this._changeNameSong(music.name);
 
+            this.visualizer.uploadSound(music);
+            this._changeNameSong(music.name);
         });
     }
 
@@ -77,11 +77,19 @@ export default class ControlPanel {
         this.pauseButton = document.createElement('button');
         this.resetButton = document.createElement('button');
 
+        this.nextButton = document.createElement('button');
+        this.prevButton = document.createElement('button');
+
         this.playButton.textContent = 'Play';
         this.pauseButton.textContent = 'Pause';
         this.resetButton.textContent = 'Reset';
 
+        this.nextButton.textContent = '>';
+        this.prevButton.textContent = '<';
+
+        this.buttonPanel.appendChild(this.prevButton);
         this.buttonPanel.appendChild(this.playButton);
+        this.buttonPanel.appendChild(this.nextButton);
         this.buttonPanel.appendChild(this.pauseButton);
         this.buttonPanel.appendChild(this.resetButton);
 
@@ -101,6 +109,16 @@ export default class ControlPanel {
 
         this.resetButton.addEventListener('click', () => {
             this.visualizer.resetSound();
+        });
+
+        this.nextButton.addEventListener('click', () => {
+            this.visualizer.nextSound();
+            this._changeNameSong(this.visualizer.buffersSound[this.visualizer.currentSound].name);
+        });
+
+        this.prevButton.addEventListener('click', () => {
+            this.visualizer.prevSound();
+            this._changeNameSong(this.visualizer.buffersSound[this.visualizer.currentSound].name);
         });
     }
 

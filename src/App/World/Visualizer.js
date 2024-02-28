@@ -31,13 +31,11 @@ export default class Visualizer {
     _initFileReader() {
         this.reader = new FileReader();
 
-        this.reader.addEventListener('load', (e) => {
-            console.log(e);
+        this.reader.addEventListener('load', () => {
             this.loader.load(this.reader.result, (buffer) => {
-                this.buffersSound.push(buffer);
-                this.currentSound++;
-
-                this.setSound(this.buffersSound[this.currentSound - 1]);
+                this.addSound(buffer, this.nameMusic);
+                this.currentSound = this.buffersSound.length - 1;
+                this.setSound(this.currentSound);
                 this.playSound();
             });
         });
@@ -47,12 +45,22 @@ export default class Visualizer {
         this.currentTime = 0;
     }
 
-    setSound(buffer) {
-        this.sound.setBuffer(buffer);
+    addSound(buffer, name) {
+        this.buffersSound.push({ buffer, name });
+    }
+
+    setSound(index) {
+        this.sound.setBuffer(this.buffersSound[index].buffer);
         this.sound.setLoop(true);
         this.sound.setVolume(0.5);
 
         this.isReady = true;
+    }
+
+    uploadSound(music) {
+        this.resetSound();
+        this.nameMusic = music.name;
+        this.reader.readAsDataURL(music);
     }
 
     playSound() {
@@ -78,9 +86,22 @@ export default class Visualizer {
         this.sound.setVolume(volume);
     }
 
-    changeSound(music) {
+    nextSound() {
+        const next = this.currentSound + 1 >= this.buffersSound.length ? 0 : this.currentSound + 1;
+        this.currentSound = next;
+
         this.resetSound();
-        this.reader.readAsDataURL(music);
+        this.setSound(this.currentSound);
+        this.playSound();
+    }
+
+    prevSound() {
+        const prev = this.currentSound - 1 < 0 ? this.buffersSound.length - 1 : this.currentSound - 1;
+        this.currentSound = prev;
+
+        this.resetSound();
+        this.setSound(this.currentSound);
+        this.playSound();
     }
 
     getFrequency() {
