@@ -83,9 +83,9 @@ body {
     color: white;
     text-align: center;
     font-size: min(5vw, 1.8rem);
+    -webkit-text-stroke: 1px black;
 
     white-space: nowrap;
-
 
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -109,7 +109,7 @@ body {
 .cursor-time::before {
     content: '';
 
-    background-color: white;
+    background-color: #35356e;
 
     position: absolute;
     left: var(--percentage);
@@ -125,7 +125,7 @@ body {
     background-color: transparent;
     color: white;
 
-    font-size: min(2vw, 1.2rem);
+    font-size: min(3vw, 1.2rem);
 
     padding: 5px 10px;
     margin-left: 1rem;
@@ -152,11 +152,19 @@ body {
 }
 
 @media (max-width: 768px) {
-    .button-container {
+    #control {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        row-gap: 1rem;
     }
 
     #file_upload {
         width: 25vw;
+    }
+    .name-song {
+        white-space: nowrap;
+        margin-bottom: 0;
     }
 }
