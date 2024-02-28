@@ -21,6 +21,24 @@ body {
     background: black;
 }
 
+.github {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45px;
+    height: 45px;
+
+    color: black
+}
+
 #control {
     z-index: 1;
     position: fixed;
